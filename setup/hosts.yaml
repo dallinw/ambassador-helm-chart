@@ -1,0 +1,38 @@
+apiVersion: getambassador.io/v3alpha1
+kind: Host
+metadata:
+  name: try-dev.supportlogic.io
+  namespace: ambassador
+spec:
+  acmeProvider:
+    authority: 'https://acme-v02.api.letsencrypt.org/directory'
+    email: dallin.wright@supportlogic.io
+  hostname: try-dev.supportlogic.io
+  tlsSecret:
+    name: ambassador-certs
+---
+apiVersion: getambassador.io/v3alpha1
+kind: Host
+metadata:
+  name: superset.supportlogic.io
+  namespace: ambassador
+spec:
+  acmeProvider:
+    authority: 'https://acme-v02.api.letsencrypt.org/directory'
+    email: dallin.wright@supportlogic.io
+  hostname: superset.supportlogic.io
+  tlsSecret:
+    name: ambassador-certs-superset
+---
+apiVersion: getambassador.io/v3alpha1
+kind: Host
+metadata:
+  name: airbyte.supportlogic.io
+  namespace: ambassador
+spec:
+  acmeProvider:
+    authority: 'https://acme-v02.api.letsencrypt.org/directory'
+    email: dallin.wright@supportlogic.io
+  hostname: airbyte.supportlogic.io
+  tlsSecret:
+    name: ambassador-certs-airbyte

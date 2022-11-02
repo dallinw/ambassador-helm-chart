@@ -1,0 +1,31 @@
+apiVersion: getambassador.io/v3alpha1
+kind: Filter
+metadata:
+  name: google
+  namespace: ambassador
+spec:
+  OAuth2:
+    # Google openid-configuration endpoint can be found at https://accounts.google.com/.well-known/openid-configuration
+    authorizationURL: https://accounts.google.com
+    # Client ID from step 6 above
+    clientID: "998089133953-iiuv49v5vhjs54n4png61h28pkork7qs.apps.googleusercontent.com"
+    # Secret created in step 6 above
+    secretName: google-oauth-secret
+    # The protectedOrigin is the scheme and Host of your Ambassador Edge Stack endpoint
+    protectedOrigins:
+    - origin: https://superset.supportlogic.io
+---
+apiVersion: getambassador.io/v3alpha1
+kind: FilterPolicy
+metadata:
+  name: google-policy
+  namespace: ambassador
+spec:
+  rules:
+      # Requires authentication on requests from any hostname
+    - host: "superset.supportlogic.io"
+      # Tells Ambassador Edge Stack to apply the Filter only on request to the quote /backend/get-quote/ endpoint
+      path: /backend/get-quote/
+      # Identifies which Filter to use for the path and host above
+      filters:
+        - name: google
