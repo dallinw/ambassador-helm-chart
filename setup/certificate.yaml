@@ -1,41 +1,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: try-dev.supportlogic.io
+  name: dallinw-com
   namespace: ambassador
 spec:
   secretName: ambassador-certs
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: try-dev.supportlogic.io
+  commonName: dallinw.com
   dnsNames:
-    - try-dev.supportlogic.io
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: superset.supportlogic.io
-  namespace: ambassador
-spec:
-  secretName: ambassador-certs-superset
-  issuerRef:
-    name: letsencrypt-production
-    kind: ClusterIssuer
-  commonName: superset.supportlogic.io
-  dnsNames:
-    - superset.supportlogic.io
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: airbyte.supportlogic.io
-  namespace: ambassador
-spec:
-  secretName: ambassador-certs-airbyte
-  issuerRef:
-    name: letsencrypt-production
-    kind: ClusterIssuer
-  commonName: airbyte.supportlogic.io
-  dnsNames:
-    - airbyte.supportlogic.io
+    - dallinw.com
